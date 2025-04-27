@@ -27,7 +27,7 @@ jobs:
         with:
           context: ./frontend
           push: true
-          tags: waffle/otel-test-fe:latest
+          tags: imwaffle/otel-test-fe:latest
           cache-from: type=gha
           cache-to: type=gha,mode=max
   be-build:
@@ -51,7 +51,7 @@ jobs:
         with:
           context: ./backend
           push: true
-          tags: waffle/otel-test-be:latest
+          tags: imwaffle/otel-test-be:latest
           cache-from: type=gha
           cache-to: type=gha,mode=max
   deploy:
@@ -65,14 +65,15 @@ jobs:
         uses: appleboy/ssh-action@master
         with:
             host: ${{ secrets.DEPLOY_HOST }}
+            port: ${{ secrets.DEPLOY_HOST_SSH_PORT }}
             username: ${{ secrets.DEPLOY_HOST_USERNAME }}
             password: ${{ secrets.DEPLOY_HOST_PASSWORD }}
             script: |
               cd /app/otel-test-app
               git pull origin main
               cd ./deploy
-              docker pull waffle/otel-test-be:latest
-              docker pull waffle/otel-test-fe:latest
+              docker pull imwaffle/otel-test-be:latest
+              docker pull imwaffle/otel-test-fe:latest
               docker compose down && docker compose up -d
       
 

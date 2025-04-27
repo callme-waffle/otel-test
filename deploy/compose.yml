@@ -4,7 +4,6 @@ services:
   otel-test-fe:
     container_name: otel-test-fe
     image: otel-test-fe
-    env_file: ./fe.env
     networks:
       - test-net
     ports:
@@ -15,7 +14,6 @@ services:
   otel-test-be:
     container_name: otel-test-be
     image: otel-test-be
-    env_file: ./be.env
     networks:
       - test-net
     ports:

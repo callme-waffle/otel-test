@@ -3,7 +3,7 @@ version: '3'
 services:
   otel-test-fe:
     container_name: otel-test-fe
-    image: otel-test-fe
+    image: imwaffle/otel-test-be:latest
     networks:
       - test-net
     ports:
@@ -13,7 +13,7 @@ services:
 
   otel-test-be:
     container_name: otel-test-be
-    image: otel-test-be
+    image: imwaffle/otel-test-fe:latest
     networks:
       - test-net
     ports:

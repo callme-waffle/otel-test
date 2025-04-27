@@ -4,6 +4,7 @@ services:
   otel-test-fe:
     container_name: otel-test-fe
     image: imwaffle/otel-test-be:latest
+    env_file: ./fe.env
     networks:
       - test-net
     ports:
@@ -14,6 +15,7 @@ services:
   otel-test-be:
     container_name: otel-test-be
     image: imwaffle/otel-test-fe:latest
+    env_file: ./be.env
     networks:
       - test-net
     ports:

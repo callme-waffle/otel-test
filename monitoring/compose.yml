@@ -40,7 +40,7 @@ services:
   otel-collector:
     image: otel/opentelemetry-collector-contrib
     volumes:
-      - ./otel-collector/config/collector.yaml:/etc/otelcol-contrib/config.yaml
+      - ./otel-collector/config/collector.yml:/etc/otelcol-contrib/config.yaml
     ports:
       # OpenTelemetry 수신포트
       - 4317:4317 # gRPC receiver

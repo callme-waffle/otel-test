@@ -1,2 +1,5 @@
 *.env*
 *.sh
+monitoring/*/data/*
+
+.DS_Store

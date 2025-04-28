@@ -9,5 +9,5 @@ elasticsearch.hosts: [ "http://otel-test-elastic:9200" ]
 
 ## X-Pack security credentials
 #
-#elasticsearch.username: elastic
-#elasticsearch.password: changeme
+elasticsearch.username: "kibana_system"
+elasticsearch.password: "elktest_kibana_system"

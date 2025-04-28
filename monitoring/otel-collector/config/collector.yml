@@ -13,6 +13,9 @@ exporters:
     auth:
       authenticator: basicauth
 
+  logging:
+    loglevel: debug
+
 extensions:
   basicauth:
     client_auth:

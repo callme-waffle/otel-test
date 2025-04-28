@@ -43,6 +43,9 @@ services:
     image: otel/opentelemetry-collector-contrib
     volumes:
       - ./otel-collector/config/collector.yml:/etc/otelcol-contrib/config.yaml
+    networks:
+      - elk
+      - test-net
     ports:
       # OpenTelemetry 수신포트
       - 4317:4317 # gRPC receiver

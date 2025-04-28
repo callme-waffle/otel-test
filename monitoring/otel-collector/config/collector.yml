@@ -8,12 +8,25 @@ processors:
   batch:
 
 exporters:
-  prometheusremotewrite: # the PRW exporter, to ingest metrics to backend
-    endpoint: https://prw.example.com/v1/api/remote_write
+  elasticsearch:
+    endpoint: http://otel-test-elastic:9200
+    auth:
+      authenticator: basicauth
+
+extensions:
+  basicauth:
+    client_auth:
+      username: otel_user
+      password: elktest_otel_user
 
 service:
+  extensions: [basicauth]
   pipelines:
-    metrics/prod:
+    logs:
       receivers: [otlp]
       processors: [batch]
-      exporters: [prometheusremotewrite]
+      exporters: [elasticsearch]
+    traces:
+      receivers: [otlp]
+      processors: [batch]
+      exporters: [elasticsearch]

@@ -13,9 +13,8 @@ exporters:
     auth:
       authenticator: basicauth
 
-  logging:
-    debug:
-      verbosity: detailed
+  debug:
+    verbosity: detailed
 
 extensions:
   basicauth:

@@ -14,7 +14,8 @@ exporters:
       authenticator: basicauth
 
   logging:
-    loglevel: debug
+    debug:
+      verbosity: detailed
 
 extensions:
   basicauth:

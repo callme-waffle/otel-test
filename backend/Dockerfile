@@ -21,4 +21,4 @@ ENV OTEL_SERVICE_NAME=default-service
 ENV OTEL_EXPORTER_OTLP_ENDPOINT=http://localhost:4318
 
 # FastAPI 앱 실행 (uvicorn 사용)
-CMD ["opentelemetry-instrument", "--traces_exporter", "otlp", "--metrices_exporter", "otlp", "--logs_exporter", "otlp", "uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8080"]
+CMD ["opentelemetry-instrument", "--traces_exporter", "otlp", "--metrics_exporter", "otlp", "--logs_exporter", "otlp", "uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8080"]

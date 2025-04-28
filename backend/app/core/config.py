@@ -16,6 +16,11 @@ class Settings(BaseSettings):
     # 서버 포트 정보
     BACKEND_PORT: int = 8000
 
+    # OpenTelemetry 연동정보
+    OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED: str
+    OTEL_SERVICE_NAME: str
+    OTEL_EXPORTER_OTLP_ENDPOINT: str
+
     class Config:
         env_file = ".env.development"  # env 파일 지정
 

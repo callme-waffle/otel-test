@@ -1,8 +1,8 @@
 version: '2'
 
 services:
-  elasticsearch:
-    container_name: elasticsearch
+  otel-test-elastic:
+    container_name: otel-test-elastic
     build:
       context: elasticsearch/
       args:
@@ -20,8 +20,8 @@ services:
       - elk
       - test-net
 
-  kibana:
-    container_name: kibana
+  otel-test-kibana:
+    container_name: otel-test-kibana
     build:
       context: kibana/
       args:
@@ -35,7 +35,28 @@ services:
       - elk
       - test-net
     depends_on:
-      - elasticsearch
+      - otel-test-elastic
+  
+  otel-collector:
+    image: otel/opentelemetry-collector-contrib
+    volumes:
+      - ./otel-collector/config/collector.yaml:/etc/otelcol-contrib/config.yaml
+    ports:
+      # OpenTelemetry 수신포트
+      - 4317:4317 # gRPC receiver
+      - 4318:4318 # http receiver
+
+      # Collector Health Check 포트
+      - 13133:13133 # health check
+
+      # OpenTelemetry 성능체크
+      - 55679:55679 # zpages ext (디버깅 페이지)
+      - 1888:1888 # pprof ext (otel 성능 체크)
+
+      # Prometheus 연동
+      - 8888:8888
+      - 8889:8889
+
 
 networks:
 

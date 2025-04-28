@@ -75,6 +75,9 @@ jobs:
               docker pull imwaffle/otel-test-be:latest
               docker pull imwaffle/otel-test-fe:latest
               docker compose down && docker compose up -d
+              cd ../monitoring
+              docker compose down && docker compose up -d
+              
       
 
         

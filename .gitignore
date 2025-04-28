@@ -1,5 +1,10 @@
+# global
 *.env*
 *.sh
+.DS_Store
+
+# monitoring
 monitoring/*/data/*
 
-.DS_Store
+# backend
+venv

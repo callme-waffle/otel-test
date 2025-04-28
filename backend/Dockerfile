@@ -16,6 +16,9 @@ COPY . .
 
 # 환경변수 기본 설정 (선택사항, 실제 실행은 .env로 주입)
 ENV BACKEND_PORT=8080
+ENV OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED=true
+ENV OTEL_SERVICE_NAME=default-service
+ENV OTEL_EXPORTER_OTLP_ENDPOINT=http://localhost:4318
 
 # FastAPI 앱 실행 (uvicorn 사용)
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8080", "--reload"]
+CMD ["opentelemetry-instrument", "--traces_exporter", "otlp", "--metrices_exporter", "otlp", "--logs_exporter", "otlp", "uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8080"]

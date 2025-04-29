@@ -1,6 +1,7 @@
 from fastapi import APIRouter, HTTPException
 import uuid
 import datetime as dt
+import logging
 
 from app.schemas import order_schema
 
@@ -19,6 +20,7 @@ def create_order(order: order_schema.OrderCreateRequest):
         "status": "PENDING",
         "created_at": str(dt.datetime.now())
     }
+    logging.info(f"Order Created: {order_id}")
     return fake_order_db[order_id]
 
 @router.get("/status", response_model=order_schema.OrderStatusResponse)
@@ -26,7 +28,5 @@ def get_order_status(order_id: str):
     order = fake_order_db.get(order_id)
     if not order:
         raise HTTPException(status_code=404, detail="Order not found")
-    print("=" * 20)
-    print(order)
-    print("=" * 20)
+    logging.info(f"Order Loaded: {order_id}")
     return order

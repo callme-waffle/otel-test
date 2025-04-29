@@ -30,8 +30,8 @@ service:
     logs:
       receivers: [otlp]
       processors: [batch]
-      exporters: [elasticsearch]
+      exporters: [elasticsearch, debug]
     traces:
       receivers: [otlp]
       processors: [batch]
-      exporters: [elasticsearch]
+      exporters: [elasticsearch, debug]

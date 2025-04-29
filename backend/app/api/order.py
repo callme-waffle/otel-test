@@ -5,6 +5,11 @@ import logging
 
 from app.schemas import order_schema
 
+logging.basicConfig(
+    level=logging.INFO,            # 출력할 최소 레벨 설정
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",  # 로그 출력 포맷
+)
+
 router = APIRouter()
 
 # 임시 메모리 저장소

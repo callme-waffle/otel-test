@@ -12,17 +12,17 @@ services:
     depends_on:
       - otel-test-be
 
-  otel-test-be:
+  otel-test-be-python:
     container_name: otel-test-be
     image: imwaffle/otel-test-be:latest
     env_file: ./be.env
     networks:
       - test-net
     ports:
-      - "8080:8080"
+      - "38080:8080"
 
-  otel-test-be-java:
-    container_name: otel-test-be-java
+  otel-test-be:
+    container_name: otel-test-be
     image: imwaffle/otel-test-be-java:latest
     env_file: ./be.java.env
     networks:

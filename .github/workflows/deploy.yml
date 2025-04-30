@@ -53,8 +53,7 @@ jobs:
           push: true
           tags: imwaffle/otel-test-be:latest
           cache-from: type=gha
-          cache-to: type=gha,mode=max
-  
+          cache-to: type=gha,mode=max 
   java-be-build:
     runs-on: ubuntu-latest
     steps:
@@ -80,8 +79,7 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
   
-  
-  
+
   deploy:
     needs:
       - fe-build
@@ -102,11 +100,9 @@ jobs:
               git pull origin main
               cd ./deploy
               docker pull imwaffle/otel-test-be:latest
+              docker pull imwaffle/otel-test-be-java:latest
               docker pull imwaffle/otel-test-fe:latest
               docker compose down && docker compose up -d
               cd ../monitoring
               docker compose down && docker compose up -d
               
-      
-
-        

@@ -21,6 +21,15 @@ services:
     ports:
       - "8080:8080"
 
+  otel-test-be-java:
+    container_name: otel-test-be-java
+    image: imwaffle/otel-test-be-java:latest
+    env_file: ./be.java.env
+    networks:
+      - test-net
+    ports:
+      - "8080:8080"
+
 networks:
   test-net:
     external: true

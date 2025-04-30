@@ -3,7 +3,7 @@ name: OTel Edit Deployment Automizer
 on:
   push:
     branches:
-      - "master"
+      - "main"
 
 jobs:
   fe-build:

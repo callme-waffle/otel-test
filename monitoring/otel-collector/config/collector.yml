@@ -35,3 +35,7 @@ service:
       receivers: [otlp]
       processors: [batch]
       exporters: [elasticsearch, debug]
+    metric:
+      receivers: [otlp]
+      processors: [batch]
+      exporters: [elasticsearch, debug]

@@ -86,6 +86,7 @@ jobs:
     needs:
       - fe-build
       - be-build
+      - java-be-build
     runs-on: ubuntu-latest
     steps:
       - 

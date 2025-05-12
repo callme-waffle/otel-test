@@ -9,6 +9,7 @@ import org.example.oteltest.dto.OrderResDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,9 +25,9 @@ public class TestController {
 	private static final Logger logger = LoggerFactory.getLogger(TestController.class);
 
 	@GetMapping("/")
-	public Boolean TestHandler() {
-		logger.info(String.format("[TestHandler] Accesed"));
-		return new Boolean(true);
+	public ResponseEntity<String> TestHandler() {
+			logger.info("[TestHandler] Accessed");
+			return ResponseEntity.ok("true");
 	}
 
 	@PostMapping("/")

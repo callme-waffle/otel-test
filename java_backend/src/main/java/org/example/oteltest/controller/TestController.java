@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -23,9 +23,15 @@ public class TestController {
 	HashMap<String, Order> orders = new HashMap<>();
 	private static final Logger logger = LoggerFactory.getLogger(TestController.class);
 
+	@GetMapping("/")
+	public Boolean TestHandler() {
+		logger.info(String.format("[TestHandler] Accesed"));
+		return new Boolean(true);
+	}
+
 	@PostMapping("/")
 	public OrderResDTO basicHandler(
-		@RequestParam OrderBodyDTO body
+		@RequestBody OrderBodyDTO body
 	) {
 		Order order = new Order(body.item_name(), body.quantity());
 		logger.info(String.format("[basicHandler] Order Created: %s", order.getOrderId()));

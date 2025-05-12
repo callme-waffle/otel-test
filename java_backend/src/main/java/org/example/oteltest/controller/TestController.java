@@ -24,13 +24,13 @@ public class TestController {
 	HashMap<String, Order> orders = new HashMap<>();
 	private static final Logger logger = LoggerFactory.getLogger(TestController.class);
 
-	@GetMapping("/")
+	@GetMapping("")
 	public ResponseEntity<String> TestHandler() {
 			logger.info("[TestHandler] Accessed");
 			return ResponseEntity.ok("true");
 	}
 
-	@PostMapping("/")
+	@PostMapping("")
 	public OrderResDTO basicHandler(
 		@RequestBody OrderBodyDTO body
 	) {

@@ -12,8 +12,8 @@ services:
     depends_on:
       - otel-test-be
 
-  otel-test-be:
-    container_name: otel-test-be
+  otel-test-be-java:
+    container_name: otel-test-be-java
     image: imwaffle/otel-test-be-java:latest
     env_file: ./be.java.env
     networks:

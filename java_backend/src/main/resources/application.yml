@@ -1,0 +1,18 @@
+otel:
+  service:
+    name: ${OTEL_SERVICE_NAME:oteltest-service}
+  exporter:
+    otlp:
+      endpoint: ${OTEL_EXPORTER_OTLP_ENDPOINT:http://localhost:4317}
+      protocol: ${OTEL_EXPORTER_OTLP_PROTOCOL:grpc}
+      timeout: ${OTEL_EXPORTER_OTLP_TIMEOUT:10000}
+  logs:
+    batch:
+      max-queue-size: ${OTEL_LOGS_BATCH_MAX_QUEUE_SIZE:512}
+      max-export-batch-size: ${OTEL_LOGS_BATCH_MAX_EXPORT_BATCH_SIZE:512}
+      schedule-delay: ${OTEL_LOGS_BATCH_SCHEDULE_DELAY:5000}
+
+logging:
+  level:
+    root: ${LOG_LEVEL:INFO}
+    io.opentelemetry: ${OTEL_LOG_LEVEL:INFO} 

@@ -12,18 +12,17 @@ FROM bellsoft/liberica-openjdk-alpine:17
 
 WORKDIR /app
 COPY --from=builder /app/build/libs/*.jar app.jar
-COPY ./opentelemetry-javaagent.jar opentelemetry-javaagent.jar
 
-ENV JAVA_TOOL_OPTIONS="-javaagent:./opentelemetry-javaagent.jar"
-
-ENV OTEL_TRACES_EXPORTER=logging
-ENV OTEL_LOGS_EXPORTER=logging
-ENV OTEL_METRICS_EXPORTER=logging
-ENV OTEL_METRIC_EXPORT_INTERVAL=15000
-
-ENV OTEL_SERVICE_NAME=otel-test-java-be-service
-ENV OTEL_EXPORTER_OTLP_PROTOCOL=http/protobuf
-ENV OTEL_EXPORTER_OTLP_ENDPOINT=http://localhost:4318/
+# OpenTelemetry 환경변수 설정
+ENV OTEL_SERVICE_NAME=oteltest-service
+ENV OTEL_EXPORTER_OTLP_ENDPOINT=http://localhost:4317
+ENV OTEL_EXPORTER_OTLP_PROTOCOL=grpc
+ENV OTEL_EXPORTER_OTLP_TIMEOUT=10000
+ENV OTEL_LOGS_BATCH_MAX_QUEUE_SIZE=512
+ENV OTEL_LOGS_BATCH_MAX_EXPORT_BATCH_SIZE=512
+ENV OTEL_LOGS_BATCH_SCHEDULE_DELAY=5000
+ENV LOG_LEVEL=INFO
+ENV OTEL_LOG_LEVEL=INFO
 
 EXPOSE 8080
 

@@ -23,10 +23,17 @@ dependencies {
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
 
+    implementation 'io.opentelemetry:opentelemetry-api:1.36.0'
+    implementation 'io.opentelemetry:opentelemetry-sdk:1.36.0'
+    implementation 'io.opentelemetry:opentelemetry-exporter-otlp:1.36.0'
+    implementation 'io.opentelemetry.instrumentation:opentelemetry-instrumentation-annotations:1.36.0'
+    implementation 'io.opentelemetry:opentelemetry-extension-annotations:1.36.0'
+    
+    implementation 'io.opentelemetry.instrumentation:opentelemetry-logback-1.0:1.36.0-alpha'
+
     implementation 'ch.qos.logback:logback-classic'
     implementation 'ch.qos.logback:logback-core'
     implementation 'org.slf4j:slf4j-api'
-
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'

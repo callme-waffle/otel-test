@@ -10,7 +10,7 @@ services:
     ports:
       - "800:80"
     depends_on:
-      - otel-test-be
+      - otel-test-be-java
 
   otel-test-be-java:
     container_name: otel-test-be-java

@@ -6,6 +6,7 @@ import io.opentelemetry.api.trace.propagation.W3CTraceContextPropagator;
 import io.opentelemetry.context.propagation.ContextPropagators;
 import io.opentelemetry.sdk.OpenTelemetrySdk;
 import io.opentelemetry.sdk.resources.Resource;
+import io.opentelemetry.sdk.trace.SdkTracerProvider;
 import io.opentelemetry.semconv.resource.attributes.ResourceAttributes;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -29,8 +30,12 @@ public class OpenTelemetryConfig {
                 .merge(Resource.create(Attributes.of(
                         ResourceAttributes.SERVICE_NAME, serviceName)));
 
-        return OpenTelemetrySdk.builder()
+        SdkTracerProvider tracerProvider = SdkTracerProvider.builder()
                 .setResource(resource)
+                .build();
+
+        return OpenTelemetrySdk.builder()
+                .setTracerProvider(tracerProvider)
                 .setPropagators(ContextPropagators.create(W3CTraceContextPropagator.getInstance()))
                 .buildAndRegisterGlobal();
     }
